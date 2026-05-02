@@ -1,7 +1,7 @@
 # TODO Roadmap (Clean & Deduplicated)
 
 ## 1. Production Hardening
-- [ ] Unified invariants (no negative answers, valid expressions, valid units)
+- [x] Unified invariants (no negative answers, valid expressions, valid units)
 - [ ] Deterministic mode (seed control)
 - [ ] Performance profiling + benchmarks
 - [ ] Fail‑fast guards in all domain generators

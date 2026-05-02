@@ -12,6 +12,7 @@ Enterprise-grade, modular math dataset generator for training and evaluating rea
   - Units, rates, proportional reasoning
   - Mixed-domain reasoning
 - Step-by-step reasoning traces
+- Unified invariant enforcement (non-negative answers, finite values, non-empty expressions)
 - Noise injection and difficulty scaling
 - Curriculum-ready structure
 - JSONL dataset output
