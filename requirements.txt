@@ -1,0 +1,7 @@
+pytest
+black
+ruff
+mypy
+tqdm>=4.66.0
+numpy>=1.26.0
+

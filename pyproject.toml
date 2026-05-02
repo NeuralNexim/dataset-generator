@@ -1,0 +1,50 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "math_dataset_generator"
+version = "0.1.0"
+description = "A modular math dataset generator with multi-domain reasoning."
+authors = [
+    { name = "Jeyakumar Sethuram" }
+]
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = ["tqdm>=4.66.0","numpy>=1.26.0"]
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "black",
+    "ruff",
+    "mypy"
+]
+train = [
+    "torch",
+    "transformers",
+    "datasets",
+    "accelerate",
+    "sentencepiece"
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["math_dataset_generator*"]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.black]
+line-length = 88
+target-version = ["py313"]
+
+[tool.ruff]
+line-length = 88
+target-version = "py313"
+
+[tool.mypy]
+python_version = "3.13"
+ignore_missing_imports = true

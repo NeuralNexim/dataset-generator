@@ -1,0 +1,109 @@
+# TODO Roadmap (Clean & Deduplicated)
+
+## 1. Production Hardening
+- [ ] Unified invariants (no negative answers, valid expressions, valid units)
+- [ ] Deterministic mode (seed control)
+- [ ] Performance profiling + benchmarks
+- [ ] Fail‑fast guards in all domain generators
+- [ ] Unified error model (DomainError, TemplateError, ReasoningError)
+- [ ] Domain self‑test command (`python -m math_dataset_generator.selftest`)
+- [ ] Logging + debug mode
+- [ ] Hardening pass v2 (shared reasoning engine, shared expression builder, domain invariants)
+
+---
+
+## 2. New Domains
+- [ ] Probability
+- [ ] Combinatorics
+- [ ] Sequences & series
+- [ ] Number theory
+- [ ] Logic puzzles
+- [ ] Multi‑step algebra
+- [ ] Calculus (limits, derivatives, integrals)
+- [ ] Matrices & linear algebra
+- [ ] Diagram‑based word problems (text-only first)
+
+---
+
+## 3. Curriculum Mode
+- [ ] Difficulty tiers (easy → olympiad)
+- [ ] Progressive templates per domain
+- [ ] Multi‑step reasoning depth control
+- [ ] Curriculum schedules (domain‑specific + mixed)
+- [ ] Curriculum export mode (`--curriculum <name>`)
+
+---
+
+## 4. Multilingual Mode
+- [ ] Language packs (EN, TA, HI, ES, FR, AR)
+- [ ] Number‑to‑words + words‑to‑number per language
+- [ ] Template translation layer
+- [ ] Multilingual CLI flag (`--lang <code>`)
+- [ ] Multilingual stress tests
+
+---
+
+## 5. Dataset Export Tooling
+- [ ] JSONL writer (sharded)
+- [ ] Parquet writer
+- [ ] Dataset manifest (metadata, version, schema)
+- [ ] Resume‑export mode
+- [ ] CLI flags for size, seed, curriculum, language
+- [ ] Dataset integrity checker
+
+---
+
+## 6. Model‑Training Integration
+- [ ] Tokenizer integration (LLaMA, Qwen, Mistral, Phi)
+- [ ] Dataset mixing strategies
+- [ ] Curriculum training loops
+- [ ] Evaluation harness
+- [ ] Benchmark suite (accuracy, reasoning depth, robustness)
+
+---
+
+## 7. Documentation
+- [ ] README overhaul
+- [ ] ARCHITECTURE.md
+- [ ] SCHEMA.md
+- [ ] DOMAIN_GUIDE.md
+- [ ] CONTRIBUTING.md
+- [ ] CHANGELOG.md
+- [ ] EXAMPLES.md
+- [ ] Stress suite documentation
+
+---
+
+## 8. Project Infrastructure
+### 8.1 GitHub Project Board
+- [ ] Create board (Backlog → In Progress → Review → Done)
+- [ ] Convert TODO items into GitHub Issues
+- [ ] Link issues to milestones
+- [ ] Add automation rules (auto‑move on PR merge)
+
+### 8.2 Milestone‑Based Roadmap
+- [ ] Group tasks into Milestone 1–5
+- [ ] Assign timelines
+- [ ] Identify dependencies
+- [ ] Add milestone success criteria
+
+### 8.3 Final Project Tree Generation
+- [ ] Auto-generate canonical project tree
+- [ ] Add tree validation script
+- [ ] Add “project doctor” command to detect missing files
+
+---
+
+## 9. Maintenance & Quality
+### 9.1 Canonical Claude Repair Prompt
+- [ ] Create stable, versioned repair prompt
+- [ ] Add contributor instructions
+- [ ] Add consistency enforcement section
+- [ ] Add repo diff analysis section
+- [ ] Store in `maintenance/CLAUDE_PROMPT.md`
+
+### 9.2 Golden-Sample Test Suite
+- [ ] Create golden JSONL samples per domain
+- [ ] Add roundtrip tests against golden samples
+- [ ] Add schema diffing tool
+- [ ] Add regression detection (fail if output changes unexpectedly)

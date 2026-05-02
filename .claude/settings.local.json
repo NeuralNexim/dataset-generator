@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(Get-ChildItem -Path \"d:\\\\dataset-generator\" -Recurse -Force)",
+      "Bash(Select-Object -Property FullName, PSIsContainer)",
+      "Bash(Sort-Object FullName)",
+      "Bash(Format-Table -AutoSize)",
+      "PowerShell(Get-ChildItem -Path \"d:\\\\dataset-generator\" -Depth 1 -Force | Where-Object { $_.PSIsContainer -eq $false } | Select-Object Name, FullName)",
+      "PowerShell(Get-ChildItem -Path \"d:\\\\dataset-generator\" -Depth 1 | Where-Object { $_.PSIsContainer -eq $true } | Select-Object Name)",
+      "Bash(python -m pytest tests/ -v)",
+      "Bash(python -c \"from math_dataset_generator.utils.word_to_number import number_to_words, words_to_number\")",
+      "Bash(python -c \"from math_dataset_generator.generator import generate_one_sample\")",
+      "Bash(python -c \"from math_dataset_generator.utils.config import CONFIG; print\\('MAX_WORD_NUMBER' in dir\\(\\)\\)\")",
+      "Bash(pip install *)",
+      "Bash(python -m pytest -q)",
+      "Bash(python -m math_dataset_generator.stress --all --load light --mode sequential)"
+    ]
+  }
+}

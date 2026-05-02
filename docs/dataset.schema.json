@@ -1,0 +1,55 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "title": "Math Dataset Row",
+    "type": "object",
+    "required": [
+        "domain",
+        "difficulty",
+        "input",
+        "output",
+        "metadata"
+    ],
+    "properties": {
+        "domain": {
+            "type": "string",
+            "description": "Domain name (arithmetic, algebra, geometry, etc.)"
+        },
+        "difficulty": {
+            "type": "string",
+            "enum": [
+                "easy",
+                "medium",
+                "hard",
+                "auto"
+            ]
+        },
+        "input": {
+            "type": "string",
+            "description": "The problem text or symbolic expression"
+        },
+        "output": {
+            "type": "string",
+            "description": "The correct answer"
+        },
+        "expression": {
+            "type": "string",
+            "description": "Optional symbolic expression"
+        },
+        "reasoning": {
+            "type": [
+                "string",
+                "array"
+            ],
+            "description": "Optional reasoning steps"
+        },
+        "noisy_input": {
+            "type": "string",
+            "description": "Optional noise-injected version of input"
+        },
+        "metadata": {
+            "type": "object",
+            "description": "Domain-specific metadata",
+            "additionalProperties": true
+        }
+    }
+}
