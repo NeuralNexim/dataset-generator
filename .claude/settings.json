@@ -1,9 +1,0 @@
-{
-  "permissions": {
-    "allow": [
-      "Bash(Select-Object FullName)",
-      "PowerShell(Get-ChildItem -Path \"d:\\\\dataset-generator\" -Recurse -Force | Where-Object {$_.PSIsContainer -eq $false} | Select-Object -ExpandProperty FullName | Sort-Object)",
-      "Bash(.venv\\\\Scripts\\\\python.exe -c \"from math_dataset_generator.domains import DOMAIN_REGISTRY; print\\('DOMAIN_REGISTRY keys:', list\\(DOMAIN_REGISTRY.keys\\(\\)\\)\\)\")"
-    ]
-  }
-}
