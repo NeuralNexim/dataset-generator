@@ -52,7 +52,9 @@ def generate_logic_puzzles_sample() -> dict:
             f"How many coins does {name} have now?"
         )
         expression = f"{start} - {give} + {receive}"
-        reasoning = f"{start} - {give} = {start - give}; {start - give} + {receive} = {answer}."
+        reasoning = (
+            f"{start} - {give} = {start - give}; {start - give} + {receive} = {answer}."
+        )
 
     assert_valid_answer(answer, "logic_puzzles")
     return {

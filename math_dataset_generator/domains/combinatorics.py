@@ -29,9 +29,7 @@ def generate_combinatorics_sample() -> dict:
             f"(order matters)?"
         )
         expression = f"P({n},{r})"
-        reasoning = (
-            f"P({n},{r}) = {n}! / ({n}-{r})! = {answer}."
-        )
+        reasoning = f"P({n},{r}) = {n}! / ({n}-{r})! = {answer}."
 
     elif pattern == "combination":
         n = random.randint(4, 10)
@@ -42,9 +40,7 @@ def generate_combinatorics_sample() -> dict:
             f"(order does not matter)?"
         )
         expression = f"C({n},{r})"
-        reasoning = (
-            f"C({n},{r}) = {n}! / ({r}! × ({n}-{r})!) = {answer}."
-        )
+        reasoning = f"C({n},{r}) = {n}! / ({r}! × ({n}-{r})!) = {answer}."
 
     else:  # counting — multiplication principle
         choices = [random.randint(2, 6) for _ in range(2)]
@@ -54,7 +50,9 @@ def generate_combinatorics_sample() -> dict:
             f"for the second item. How many combinations are there in total?"
         )
         expression = f"{choices[0]} * {choices[1]}"
-        reasoning = f"By the multiplication principle: {choices[0]} × {choices[1]} = {answer}."
+        reasoning = (
+            f"By the multiplication principle: {choices[0]} × {choices[1]} = {answer}."
+        )
 
     assert_valid_answer(answer, "combinatorics")
     return {

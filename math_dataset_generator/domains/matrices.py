@@ -23,7 +23,7 @@ def generate_matrices_sample() -> dict:
     mat_str = f"[[{a}, {b}], [{c}, {d}]]"
 
     if pattern == "determinant":
-        answer = abs(_det2(a, b, c, d))   # keep non-negative
+        answer = abs(_det2(a, b, c, d))  # keep non-negative
         raw_det = _det2(a, b, c, d)
         question = f"Find the determinant of the 2×2 matrix {mat_str}. Give the absolute value."
         expression = f"|{a}*{d} - {b}*{c}|"

@@ -38,9 +38,7 @@ def generate_diagram_word_problems_sample() -> dict:
         gap = random.randint(1, 12 - h1)
         h2 = h1 + gap
         answer = gap
-        question = (
-            f"A clock shows {h1}:00. How many hours later will it show {h2}:00?"
-        )
+        question = f"A clock shows {h1}:00. How many hours later will it show {h2}:00?"
         expression = f"{h2} - {h1}"
         reasoning = f"{h2} - {h1} = {answer} hours."
 
@@ -55,9 +53,7 @@ def generate_diagram_word_problems_sample() -> dict:
             f"What is the straight-line (Euclidean) distance between A and B?"
         )
         expression = f"sqrt(({x2}-{x1})^2 + ({y2}-{y1})^2)"
-        reasoning = (
-            f"Distance = √(({dx})² + ({dy})²) = √({dx**2} + {dy**2}) = √{hyp**2} = {answer}."
-        )
+        reasoning = f"Distance = √(({dx})² + ({dy})²) = √({dx**2} + {dy**2}) = √{hyp**2} = {answer}."
 
     assert_valid_answer(answer, "diagram_word_problems")
     return {

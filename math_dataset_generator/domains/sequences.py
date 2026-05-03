@@ -12,9 +12,9 @@ def generate_sequences_sample() -> dict:
     pattern = random.choice(["arith_nth", "arith_sum", "geo_nth"])
 
     if pattern == "arith_nth":
-        a = random.randint(1, 10)   # first term
-        d = random.randint(1, 10)   # common difference
-        n = random.randint(5, 15)   # term index
+        a = random.randint(1, 10)  # first term
+        d = random.randint(1, 10)  # common difference
+        n = random.randint(5, 15)  # term index
         answer = a + (n - 1) * d
         question = (
             f"An arithmetic sequence has first term {a} and common difference {d}. "
@@ -35,9 +35,7 @@ def generate_sequences_sample() -> dict:
             f"first term {a} and common difference {d}."
         )
         expression = f"{n} * (2*{a} + ({n}-1)*{d}) / 2"
-        reasoning = (
-            f"S = n/2 × (2a + (n-1)d) = {n}/2 × ({2*a} + {(n-1)*d}) = {answer}."
-        )
+        reasoning = f"S = n/2 × (2a + (n-1)d) = {n}/2 × ({2*a} + {(n-1)*d}) = {answer}."
 
     else:  # geo_nth
         a = random.randint(1, 5)
@@ -49,9 +47,7 @@ def generate_sequences_sample() -> dict:
             f"What is the {n}th term?"
         )
         expression = f"{a} * {r}^({n}-1)"
-        reasoning = (
-            f"nth term = a × r^(n-1) = {a} × {r}^{n-1} = {answer}."
-        )
+        reasoning = f"nth term = a × r^(n-1) = {a} × {r}^{n-1} = {answer}."
 
     assert_valid_answer(answer, "sequences")
     return {

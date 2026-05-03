@@ -27,13 +27,11 @@ def generate_multi_step_algebra_sample() -> dict:
 
     else:  # substitution — x + y = S, x - y = D
         x = random.randint(2, 15)
-        y = random.randint(1, x)           # ensure x >= y so difference >= 0
+        y = random.randint(1, x)  # ensure x >= y so difference >= 0
         s = x + y
         d = x - y
-        answer = x                          # ask for x
-        question = (
-            f"Solve the system: x + y = {s} and x - y = {d}. What is x?"
-        )
+        answer = x  # ask for x
+        question = f"Solve the system: x + y = {s} and x - y = {d}. What is x?"
         expression = f"({s} + {d}) / 2"
         reasoning = (
             f"Adding the two equations: 2x = {s} + {d} = {s + d}. "

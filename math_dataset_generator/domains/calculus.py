@@ -18,7 +18,7 @@ def generate_calculus_sample() -> dict:
         n = random.randint(2, 5)
         coeff = a * n
         new_exp = n - 1
-        answer = coeff * (1 ** new_exp)   # always coeff when x=1
+        answer = coeff * (1**new_exp)  # always coeff when x=1
         question = (
             f"Find the derivative of f(x) = {a}x^{n} with respect to x, "
             f"then evaluate at x = 1."
@@ -38,9 +38,7 @@ def generate_calculus_sample() -> dict:
             f"Evaluate the definite integral of f(x) = {a} from x = 0 to x = {b}."
         )
         expression = f"integral({a}, 0, {b})"
-        reasoning = (
-            f"∫₀^{b} {a} dx = [{a}x]₀^{b} = {a}×{b} - {a}×0 = {answer}."
-        )
+        reasoning = f"∫₀^{b} {a} dx = [{a}x]₀^{b} = {a}×{b} - {a}×0 = {answer}."
 
     else:  # limit
         # lim_{x→c} (ax + b) = a*c + b
@@ -48,9 +46,7 @@ def generate_calculus_sample() -> dict:
         b = random.randint(0, 10)
         c = random.randint(1, 8)
         answer = a * c + b
-        question = (
-            f"Find the limit of f(x) = {a}x + {b} as x approaches {c}."
-        )
+        question = f"Find the limit of f(x) = {a}x + {b} as x approaches {c}."
         expression = f"lim(x→{c}) {a}x + {b}"
         reasoning = (
             f"Since f(x) = {a}x + {b} is continuous, lim_{{x→{c}}} f(x) = "
