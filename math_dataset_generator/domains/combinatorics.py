@@ -7,6 +7,7 @@ import random
 import math
 
 from math_dataset_generator.validation import assert_valid_answer
+from math_dataset_generator.utils.curriculum_templates import get_template
 
 
 def _perm(n: int, r: int) -> int:
@@ -17,37 +18,51 @@ def _comb(n: int, r: int) -> int:
     return math.comb(n, r)
 
 
-def generate_combinatorics_sample() -> dict:
+def generate_combinatorics_sample(difficulty: str = "medium") -> dict:
     pattern = random.choice(["permutation", "combination", "counting"])
 
+    if difficulty == "easy":
+        perm_n_range = (4, 6)
+        comb_n_range = (4, 7)
+        count_range = (2, 4)
+    elif difficulty == "hard":
+        perm_n_range = (8, 15)
+        comb_n_range = (8, 15)
+        count_range = (4, 9)
+    elif difficulty == "olympiad":
+        perm_n_range = (12, 20)
+        comb_n_range = (12, 20)
+        count_range = (6, 12)
+    else:  # medium
+        perm_n_range = (4, 9)
+        comb_n_range = (4, 10)
+        count_range = (2, 6)
+
     if pattern == "permutation":
-        n = random.randint(4, 9)
+        n = random.randint(*perm_n_range)
         r = random.randint(2, min(3, n))
         answer = _perm(n, r)
-        question = (
-            f"How many ways can {r} items be arranged from a set of {n} distinct items "
-            f"(order matters)?"
+        question = get_template("combinatorics", "permutation", difficulty).format(
+            n=n, r=r
         )
         expression = f"P({n},{r})"
         reasoning = f"P({n},{r}) = {n}! / ({n}-{r})! = {answer}."
 
     elif pattern == "combination":
-        n = random.randint(4, 10)
+        n = random.randint(*comb_n_range)
         r = random.randint(2, min(4, n))
         answer = _comb(n, r)
-        question = (
-            f"How many ways can {r} items be chosen from a set of {n} distinct items "
-            f"(order does not matter)?"
+        question = get_template("combinatorics", "combination", difficulty).format(
+            n=n, r=r
         )
         expression = f"C({n},{r})"
         reasoning = f"C({n},{r}) = {n}! / ({r}! × ({n}-{r})!) = {answer}."
 
     else:  # counting — multiplication principle
-        choices = [random.randint(2, 6) for _ in range(2)]
+        choices = [random.randint(*count_range) for _ in range(2)]
         answer = choices[0] * choices[1]
-        question = (
-            f"There are {choices[0]} choices for the first item and {choices[1]} choices "
-            f"for the second item. How many combinations are there in total?"
+        question = get_template("combinatorics", "counting", difficulty).format(
+            c0=choices[0], c1=choices[1]
         )
         expression = f"{choices[0]} * {choices[1]}"
         reasoning = (
@@ -61,4 +76,5 @@ def generate_combinatorics_sample() -> dict:
         "expression": expression,
         "reasoning": reasoning,
         "answer": answer,
+        "difficulty": difficulty,
     }

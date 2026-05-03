@@ -7,6 +7,8 @@ from math_dataset_generator.exceptions import (
 
 REQUIRED_FIELDS = ["domain", "input", "expression", "reasoning", "answer"]
 
+DIFFICULTY_LEVELS = ("easy", "medium", "hard", "olympiad")
+
 VALID_UNITS = {
     "km",
     "m",
@@ -97,6 +99,12 @@ def validate_sample(sample: dict, domain: str | None = None) -> None:
     if domain is not None and sample.get("domain") not in {domain, "mixed"}:
         raise SampleValidationError(
             f"Sample domain '{sample.get('domain')}' does not match requested '{domain}'"
+        )
+
+    difficulty = sample.get("difficulty")
+    if difficulty is not None and difficulty not in DIFFICULTY_LEVELS:
+        raise SampleValidationError(
+            f"Invalid difficulty '{difficulty}'. Must be one of {DIFFICULTY_LEVELS}"
         )
 
     _check_invariants(sample)

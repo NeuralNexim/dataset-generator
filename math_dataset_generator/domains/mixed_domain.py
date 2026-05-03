@@ -1,7 +1,7 @@
 import random
 
 
-def generate_mixed_sample(domain_registry=None):
+def generate_mixed_sample(domain_registry=None, difficulty: str = "medium"):
     """
     Randomly selects a domain and generates a sample from it.
     domain_registry is passed in by the generator to avoid circular imports.
@@ -14,7 +14,7 @@ def generate_mixed_sample(domain_registry=None):
     domains = [d for d in domain_registry.keys() if d != "mixed"]
 
     d = random.choice(domains)
-    sample = domain_registry[d]()
+    sample = domain_registry[d](difficulty=difficulty)
 
     # Override domain label
     sample["domain"] = "mixed"

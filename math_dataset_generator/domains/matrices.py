@@ -7,25 +7,41 @@ All answers are integers.
 import random
 
 from math_dataset_generator.validation import assert_valid_answer
+from math_dataset_generator.utils.curriculum_templates import get_template
 
 
 def _det2(a: int, b: int, c: int, d: int) -> int:
     return a * d - b * c
 
 
-def generate_matrices_sample() -> dict:
+def generate_matrices_sample(difficulty: str = "medium") -> dict:
     pattern = random.choice(["determinant", "trace", "scalar_mult"])
 
     # Generate a 2×2 matrix [[a, b],[c, d]]
-    a, b = random.randint(1, 9), random.randint(0, 9)
-    c, d = random.randint(0, 9), random.randint(1, 9)
+    if difficulty == "easy":
+        lo, hi = 1, 5
+        k_range = (2, 3)
+    elif difficulty == "hard":
+        lo, hi = 1, 15
+        k_range = (3, 8)
+    elif difficulty == "olympiad":
+        lo, hi = 5, 20
+        k_range = (5, 15)
+    else:  # medium
+        lo, hi = 1, 9
+        k_range = (2, 5)
+
+    a, b = random.randint(lo, hi), random.randint(0, hi)
+    c, d = random.randint(0, hi), random.randint(lo, hi)
 
     mat_str = f"[[{a}, {b}], [{c}, {d}]]"
 
     if pattern == "determinant":
         answer = abs(_det2(a, b, c, d))  # keep non-negative
         raw_det = _det2(a, b, c, d)
-        question = f"Find the determinant of the 2×2 matrix {mat_str}. Give the absolute value."
+        question = get_template("matrices", "determinant", difficulty).format(
+            mat=mat_str
+        )
         expression = f"|{a}*{d} - {b}*{c}|"
         reasoning = (
             f"det = {a}×{d} - {b}×{c} = {a*d} - {b*c} = {raw_det}. "
@@ -34,16 +50,15 @@ def generate_matrices_sample() -> dict:
 
     elif pattern == "trace":
         answer = a + d
-        question = f"Find the trace (sum of diagonal elements) of the matrix {mat_str}."
+        question = get_template("matrices", "trace", difficulty).format(mat=mat_str)
         expression = f"{a} + {d}"
         reasoning = f"Trace = top-left + bottom-right = {a} + {d} = {answer}."
 
     else:  # scalar_mult — report the (0,0) element after multiplying by k
-        k = random.randint(2, 5)
+        k = random.randint(*k_range)
         answer = k * a
-        question = (
-            f"Multiply the matrix {mat_str} by scalar {k}. "
-            f"What is the value of the top-left element of the result?"
+        question = get_template("matrices", "scalar_mult", difficulty).format(
+            mat=mat_str, k=k
         )
         expression = f"{k} * {a}"
         reasoning = f"Scalar multiplication: {k} × {a} = {answer}."
@@ -55,4 +70,5 @@ def generate_matrices_sample() -> dict:
         "expression": expression,
         "reasoning": reasoning,
         "answer": answer,
+        "difficulty": difficulty,
     }
