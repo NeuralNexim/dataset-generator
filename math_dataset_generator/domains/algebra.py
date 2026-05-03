@@ -5,6 +5,7 @@ Generates linear equations of the form ax + b = c.
 
 import random
 from typing import Dict, Any
+from math_dataset_generator.validation import assert_valid_answer
 
 
 def generate_algebra_sample(difficulty: str = "auto") -> Dict[str, Any]:
@@ -25,6 +26,7 @@ def generate_algebra_sample(difficulty: str = "auto") -> Dict[str, Any]:
 
     equation = f"{a}x + {b} = {c}"
 
+    assert_valid_answer(x, "algebra")
     return {
         "domain": "algebra",
         "input": equation,

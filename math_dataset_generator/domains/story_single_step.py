@@ -1,4 +1,5 @@
 import random
+from math_dataset_generator.validation import assert_valid_answer
 
 NAMES = ["Alice", "Bob", "Charlie", "Diana", "Ethan", "Fiona"]
 OBJECTS = ["apples", "oranges", "books", "pencils", "marbles", "coins"]
@@ -39,6 +40,7 @@ def generate_story_single_step_sample():
         answer = a * b
         reasoning = f"{a} * {b} = {answer}"
 
+    assert_valid_answer(answer, "story_single")
     return {
         "domain": "story_single",
         "input": question,

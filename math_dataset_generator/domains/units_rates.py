@@ -1,4 +1,5 @@
 import random
+from math_dataset_generator.validation import assert_valid_answer
 
 
 def generate_units_rates_sample():
@@ -39,6 +40,7 @@ def generate_units_rates_sample():
         reasoning = f"{meters} / 1000 = {km}"
         answer = km
 
+    assert_valid_answer(answer, "units_rates")
     return {
         "domain": "units_rates",
         "input": question,

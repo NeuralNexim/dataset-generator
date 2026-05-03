@@ -1,4 +1,5 @@
 import random
+from math_dataset_generator.validation import assert_valid_answer
 
 
 def generate_functions_sample():
@@ -18,6 +19,7 @@ def generate_functions_sample():
     expression = f"{a}x + {b}"
     answer = a * x + b
 
+    assert_valid_answer(answer, "functions")
     return {
         "domain": "functions",
         "input": f"If f(x) = {expression}, what is f({x})?",

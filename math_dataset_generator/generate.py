@@ -2,6 +2,7 @@ import argparse
 import json
 from math_dataset_generator.generator import generate_one_sample
 from math_dataset_generator.domains import DOMAIN_REGISTRY
+from math_dataset_generator.utils.logger import configure_logging
 
 
 def main():
@@ -21,11 +22,27 @@ def main():
         default=None,
         help="Output JSONL file. If omitted, prints to stdout.",
     )
+    parser.add_argument(
+        "--seed",
+        type=int,
+        default=None,
+        help="Random seed for reproducible output.",
+    )
+    parser.add_argument(
+        "--debug",
+        action="store_true",
+        help="Enable DEBUG-level logging.",
+    )
 
     args = parser.parse_args()
+    configure_logging(debug=args.debug)
 
     if args.domain not in DOMAIN_REGISTRY:
         raise ValueError(f"Unknown domain: {args.domain}")
+
+    import random
+    if args.seed is not None:
+        random.seed(args.seed)
 
     if args.output:
         with open(args.output, "w", encoding="utf8") as f:

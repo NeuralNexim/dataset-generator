@@ -1,4 +1,5 @@
 import random
+from math_dataset_generator.validation import assert_valid_answer
 
 
 def generate_arithmetic_sample():
@@ -40,6 +41,7 @@ def generate_arithmetic_sample():
         expression = f"{result} / {b}"
         reasoning = f"{result} / {b} = {answer}"
 
+    assert_valid_answer(answer, "arithmetic")
     return {
         "domain": "arithmetic",
         "input": question,

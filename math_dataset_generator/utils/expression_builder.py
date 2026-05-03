@@ -1,10 +1,14 @@
-def build_expression(sample):
+def build_expression(sample: dict) -> str | None:
+    """Build a symbolic expression from a dataset sample.
+
+    Primary path: use ``sample['metadata']`` if present.
+    Fallback: return the ``sample['expression']`` string already set by the domain.
+    Returns None only if neither source is available.
     """
-    Build a symbolic expression from a dataset sample.
-    Domains may override this later.
-    """
-    if "metadata" not in sample:
-        return None
+    # Fast path: domain already set a direct expression string
+    direct = sample.get("expression")
+    if not isinstance(sample.get("metadata"), dict):
+        return direct if isinstance(direct, str) and direct.strip() else None
 
     meta = sample["metadata"]
 
@@ -15,9 +19,10 @@ def build_expression(sample):
         return f"{meta['a']}*x + {meta['b']} = {meta['c']}"
 
     if sample["domain"] == "geometry":
-        if meta["shape"] == "rectangle":
+        if meta.get("shape") == "rectangle":
             return f"{meta['w']} * {meta['h']}"
-        if meta["shape"] == "triangle":
+        if meta.get("shape") == "triangle":
             return f"0.5 * {meta['b']} * {meta['h']}"
 
-    return None
+    # Metadata present but domain not handled — fall back to direct expression
+    return direct if isinstance(direct, str) and direct.strip() else None

@@ -1,4 +1,5 @@
 import random
+from math_dataset_generator.validation import assert_valid_answer
 
 
 def generate_geometry_sample():
@@ -40,6 +41,7 @@ def generate_geometry_sample():
         reasoning = f"0.5 * {b} * {h} = {area}"
         answer = area
 
+    assert_valid_answer(answer, "geometry")
     return {
         "domain": "geometry",
         "input": question,

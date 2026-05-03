@@ -1,4 +1,5 @@
 import random
+from math_dataset_generator.validation import assert_valid_answer
 
 NAMES = ["Alice", "Bob", "Charlie", "Diana", "Ethan", "Fiona"]
 OBJECTS = ["apples", "oranges", "books", "pencils", "marbles", "coins"]
@@ -69,6 +70,7 @@ def generate_story_multi_step_sample():
             f"Step 1: {a2} - {b2} = {step1}. " f"Step 2: {step1} + {c} = {answer}."
         )
 
+    assert_valid_answer(answer, "story_multi")
     return {
         "domain": "story_multi",
         "input": question,

@@ -1,4 +1,5 @@
 import random
+from math_dataset_generator.validation import assert_valid_answer
 
 
 def generate_proportional_sample():
@@ -15,6 +16,7 @@ def generate_proportional_sample():
     answer = b * scale
     reasoning = f"Cost scales proportionally: {b} * {scale} = {answer}"
 
+    assert_valid_answer(answer, "proportional")
     return {
         "domain": "proportional",
         "input": question,
