@@ -5,6 +5,7 @@ Keeps domain modules clean and consistent.
 
 import random
 from typing import Dict, Any
+from math_dataset_generator.exceptions import TemplateError
 
 # ---------------------------------------------------------
 # Template rendering helper
@@ -14,8 +15,14 @@ from typing import Dict, Any
 def render_template(template: str, **kwargs) -> str:
     """
     Render a template with placeholders like {a}, {b}, {name}.
+    Raises TemplateError if a placeholder is missing.
     """
-    return template.format(**kwargs)
+    try:
+        return template.format(**kwargs)
+    except KeyError as exc:
+        raise TemplateError(
+            f"Missing placeholder {exc} in template: {template!r}"
+        ) from exc
 
 
 # ---------------------------------------------------------

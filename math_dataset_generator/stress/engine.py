@@ -132,10 +132,20 @@ def _print_summary(results: List[Dict[str, Any]]) -> None:
         failures = res.get("failures", 0)
         duration = res["duration_sec"]
         line = f"{name:10s} | iters={iters:8d} | failures={failures:5d} | time={duration:7.3f}s"
+        if res.get("throughput_per_sec") is not None:
+            line += f" | {res['throughput_per_sec']:.1f} samples/s"
         if failures == 0:
             print(_green(line))
         else:
             print(_red(line))
+        # Per-domain breakdown for perf test
+        if name == "perf" and res.get("per_domain"):
+            for domain, stats in res["per_domain"].items():
+                print(
+                    f"  {domain:20s} mean={stats['mean_ms']:6.2f}ms  "
+                    f"p95={stats['p95_ms']:6.2f}ms  "
+                    f"min={stats['min_ms']:6.2f}ms  max={stats['max_ms']:6.2f}ms"
+                )
 
 
 def _write_report(

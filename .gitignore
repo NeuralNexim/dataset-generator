@@ -19,7 +19,6 @@ venv/
 # IDE
 .vscode/
 .idea/
-.claude/
 
 # Pytest
 .pytest_cache/

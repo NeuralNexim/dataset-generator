@@ -42,3 +42,19 @@ def test_mixed_domain_output_structure():
     assert "expression" in sample
     assert "reasoning" in sample
     assert "answer" in sample
+
+
+def test_reasoning_depth_control():
+    brief = generate_one_sample(
+        "story_multi", difficulty="hard", reasoning_depth="brief"
+    )
+    detailed = generate_one_sample(
+        "story_multi", difficulty="hard", reasoning_depth="detailed"
+    )
+    full = generate_one_sample(
+        "story_multi", difficulty="olympiad", reasoning_depth="full"
+    )
+
+    assert "Step 1:" not in brief["reasoning"]
+    assert "Step 1:" in detailed["reasoning"]
+    assert "Final answer:" in full["reasoning"]

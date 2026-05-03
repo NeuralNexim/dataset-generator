@@ -1,36 +1,36 @@
 # TODO Roadmap (Clean & Deduplicated)
 
 ## 1. Production Hardening
-- [ ] Unified invariants (no negative answers, valid expressions, valid units)
-- [ ] Deterministic mode (seed control)
-- [ ] Performance profiling + benchmarks
-- [ ] Fail‑fast guards in all domain generators
-- [ ] Unified error model (DomainError, TemplateError, ReasoningError)
-- [ ] Domain self‑test command (`python -m math_dataset_generator.selftest`)
-- [ ] Logging + debug mode
-- [ ] Hardening pass v2 (shared reasoning engine, shared expression builder, domain invariants)
+- [x] Unified invariants (no negative answers, valid expressions, valid units)
+- [x] Deterministic mode (seed control)
+- [x] Performance profiling + benchmarks
+- [x] Fail‑fast guards in all domain generators
+- [x] Unified error model (DomainError, TemplateError, ReasoningError)
+- [x] Domain self‑test command (`python -m math_dataset_generator.selftest`)
+- [x] Logging + debug mode
+- [x] Hardening pass v2 (shared reasoning engine, shared expression builder, domain invariants)
 
 ---
 
 ## 2. New Domains
-- [ ] Probability
-- [ ] Combinatorics
-- [ ] Sequences & series
-- [ ] Number theory
-- [ ] Logic puzzles
-- [ ] Multi‑step algebra
-- [ ] Calculus (limits, derivatives, integrals)
-- [ ] Matrices & linear algebra
-- [ ] Diagram‑based word problems (text-only first)
+- [x] Probability
+- [x] Combinatorics
+- [x] Sequences & series
+- [x] Number theory
+- [x] Logic puzzles
+- [x] Multi‑step algebra
+- [x] Calculus (limits, derivatives, integrals)
+- [x] Matrices & linear algebra
+- [x] Diagram‑based word problems (text-only first)
 
 ---
 
 ## 3. Curriculum Mode
-- [ ] Difficulty tiers (easy → olympiad)
-- [ ] Progressive templates per domain
-- [ ] Multi‑step reasoning depth control
-- [ ] Curriculum schedules (domain‑specific + mixed)
-- [ ] Curriculum export mode (`--curriculum <name>`)
+- [x] Difficulty tiers (easy → olympiad)
+- [x] Progressive templates per domain
+- [x] Multi‑step reasoning depth control
+- [x] Curriculum schedules (domain‑specific + mixed)
+- [x] Curriculum export mode (`--curriculum <name>`)
 
 ---
 
@@ -53,7 +53,19 @@
 
 ---
 
-## 6. Model‑Training Integration
+## 6. Serving Mode (Training Endpoint)
+- [ ] Add FastAPI-based server
+- [ ] Add /sample endpoint
+- [ ] Add /batch endpoint
+- [ ] Add streaming endpoint
+- [ ] Add curriculum parameters (difficulty, steps)
+- [ ] Add multilingual parameters (lang)
+- [ ] Add rate limiting + safety
+- [ ] Add server stress tests
+
+---
+
+## 7. Model‑Training Integration
 - [ ] Tokenizer integration (LLaMA, Qwen, Mistral, Phi)
 - [ ] Dataset mixing strategies
 - [ ] Curriculum training loops
@@ -62,7 +74,16 @@
 
 ---
 
-## 7. Documentation
+## 8. Repository Split (Data Engine vs Model Engine)
+- [ ] Keep math_dataset_generator as standalone data engine
+- [ ] Create new repo: math_model_training
+- [ ] Add pip-installable interface for generator
+- [ ] Add serving mode for training-time data streaming
+- [ ] Add integration tests between repos
+
+---
+
+## 9. Documentation
 - [ ] README overhaul
 - [ ] ARCHITECTURE.md
 - [ ] SCHEMA.md
@@ -74,35 +95,35 @@
 
 ---
 
-## 8. Project Infrastructure
-### 8.1 GitHub Project Board
+## 10. Project Infrastructure
+### 10.1 GitHub Project Board
 - [ ] Create board (Backlog → In Progress → Review → Done)
 - [ ] Convert TODO items into GitHub Issues
 - [ ] Link issues to milestones
 - [ ] Add automation rules (auto‑move on PR merge)
 
-### 8.2 Milestone‑Based Roadmap
+### 10.2 Milestone‑Based Roadmap
 - [ ] Group tasks into Milestone 1–5
 - [ ] Assign timelines
 - [ ] Identify dependencies
 - [ ] Add milestone success criteria
 
-### 8.3 Final Project Tree Generation
+### 10.3 Final Project Tree Generation
 - [ ] Auto-generate canonical project tree
 - [ ] Add tree validation script
 - [ ] Add “project doctor” command to detect missing files
 
 ---
 
-## 9. Maintenance & Quality
-### 9.1 Canonical Claude Repair Prompt
+## 11. Maintenance & Quality
+### 11.1 Canonical Claude Repair Prompt
 - [ ] Create stable, versioned repair prompt
 - [ ] Add contributor instructions
 - [ ] Add consistency enforcement section
 - [ ] Add repo diff analysis section
 - [ ] Store in `maintenance/CLAUDE_PROMPT.md`
 
-### 9.2 Golden-Sample Test Suite
+### 11.2 Golden-Sample Test Suite
 - [ ] Create golden JSONL samples per domain
 - [ ] Add roundtrip tests against golden samples
 - [ ] Add schema diffing tool
