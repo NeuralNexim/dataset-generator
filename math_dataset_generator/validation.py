@@ -37,6 +37,16 @@ DOMAIN_INVARIANTS: dict[str, dict] = {
     "proportional": {"answer_min": 0, "answer_type": (int,)},
     "functions": {"answer_min": 0, "answer_type": (int,)},
     "mixed": {"answer_min": 0, "answer_type": (int, float)},
+    # Section 2: New Domains
+    "probability": {"answer_min": 0, "answer_type": (float,)},
+    "combinatorics": {"answer_min": 0, "answer_type": (int,)},
+    "sequences": {"answer_min": 0, "answer_type": (int,)},
+    "number_theory": {"answer_min": 0, "answer_type": (int,)},
+    "logic_puzzles": {"answer_min": 0, "answer_type": (int,)},
+    "multi_step_algebra": {"answer_min": 0, "answer_type": (int,)},
+    "calculus": {"answer_min": 0, "answer_type": (int,)},
+    "matrices": {"answer_min": 0, "answer_type": (int,)},
+    "diagram_word_problems": {"answer_min": 0, "answer_type": (int,)},
 }
 
 

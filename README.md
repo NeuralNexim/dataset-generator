@@ -11,6 +11,12 @@ Enterprise-grade, modular math dataset generator for training and evaluating rea
   - Story problems (single-step and multi-step)
   - Units, rates, proportional reasoning
   - Mixed-domain reasoning
+  - Probability, combinatorics, sequences & series
+  - Number theory (GCD, LCM, primes, divisibility)
+  - Logic puzzles, multi-step algebra
+  - Calculus (limits, power-rule derivatives, definite integrals)
+  - Matrices & linear algebra (2×2 determinant, trace, scalar mult)
+  - Diagram-based word problems (text-only: grid, clock, coordinates)
 - Step-by-step reasoning traces
 - Unified invariant enforcement (non-negative answers, finite values, non-empty expressions)
 - Deterministic output via `--seed` flag

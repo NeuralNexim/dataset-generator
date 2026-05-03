@@ -13,15 +13,15 @@
 ---
 
 ## 2. New Domains
-- [ ] Probability
-- [ ] Combinatorics
-- [ ] Sequences & series
-- [ ] Number theory
-- [ ] Logic puzzles
-- [ ] Multi‑step algebra
-- [ ] Calculus (limits, derivatives, integrals)
-- [ ] Matrices & linear algebra
-- [ ] Diagram‑based word problems (text-only first)
+- [x] Probability
+- [x] Combinatorics
+- [x] Sequences & series
+- [x] Number theory
+- [x] Logic puzzles
+- [x] Multi‑step algebra
+- [x] Calculus (limits, derivatives, integrals)
+- [x] Matrices & linear algebra
+- [x] Diagram‑based word problems (text-only first)
 
 ---
 
