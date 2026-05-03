@@ -41,6 +41,7 @@ def main():
         raise ValueError(f"Unknown domain: {args.domain}")
 
     import random
+
     if args.seed is not None:
         random.seed(args.seed)
 

@@ -1,30 +1,42 @@
 import math
 
-from math_dataset_generator.exceptions import DomainError, SampleValidationError  # noqa: F401
+from math_dataset_generator.exceptions import (
+    DomainError,
+    SampleValidationError,
+)  # noqa: F401
 
 REQUIRED_FIELDS = ["domain", "input", "expression", "reasoning", "answer"]
 
 VALID_UNITS = {
-    "km", "m", "cm", "mm",
-    "kg", "g", "mg",
-    "l", "ml",
-    "km/h", "m/s",
-    "hours", "minutes", "seconds",
+    "km",
+    "m",
+    "cm",
+    "mm",
+    "kg",
+    "g",
+    "mg",
+    "l",
+    "ml",
+    "km/h",
+    "m/s",
+    "hours",
+    "minutes",
+    "seconds",
 }
 
 # Declarative invariants per domain — used for documentation and future
 # per-domain validation extensions.
 DOMAIN_INVARIANTS: dict[str, dict] = {
-    "arithmetic":   {"answer_min": 0, "answer_type": (int,)},
-    "algebra":      {"answer_min": 0, "answer_type": (int,)},
-    "geometry":     {"answer_min": 0, "answer_type": (int, float)},
+    "arithmetic": {"answer_min": 0, "answer_type": (int,)},
+    "algebra": {"answer_min": 0, "answer_type": (int,)},
+    "geometry": {"answer_min": 0, "answer_type": (int, float)},
     "word_numbers": {"answer_min": 0, "answer_type": (int,)},
     "story_single": {"answer_min": 0, "answer_type": (int,)},
-    "story_multi":  {"answer_min": 0, "answer_type": (int,)},
-    "units_rates":  {"answer_min": 0, "answer_type": (int, float)},
+    "story_multi": {"answer_min": 0, "answer_type": (int,)},
+    "units_rates": {"answer_min": 0, "answer_type": (int, float)},
     "proportional": {"answer_min": 0, "answer_type": (int,)},
-    "functions":    {"answer_min": 0, "answer_type": (int,)},
-    "mixed":        {"answer_min": 0, "answer_type": (int, float)},
+    "functions": {"answer_min": 0, "answer_type": (int,)},
+    "mixed": {"answer_min": 0, "answer_type": (int, float)},
 }
 
 

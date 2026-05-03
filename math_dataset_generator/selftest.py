@@ -12,14 +12,15 @@ import random as _random
 from math_dataset_generator.domains import DOMAIN_REGISTRY
 from math_dataset_generator.generator import generate_one_sample
 
-
 _GREEN = "\033[32m"
 _RED = "\033[31m"
 _CYAN = "\033[36m"
 _RESET = "\033[0m"
 
 
-def run_domain_selftest(n_samples: int = 50, seed: int | None = None) -> dict[str, dict]:
+def run_domain_selftest(
+    n_samples: int = 50, seed: int | None = None
+) -> dict[str, dict]:
     """Generate *n_samples* per domain and report pass/fail counts."""
     if seed is not None:
         _random.seed(seed)
@@ -68,10 +69,15 @@ def _print_report(results: dict[str, dict], n_samples: int) -> bool:
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="Run domain self-tests.")
-    parser.add_argument("--samples", type=int, default=50,
-                        help="Number of samples per domain (default: 50).")
-    parser.add_argument("--seed", type=int, default=None,
-                        help="Random seed for reproducibility.")
+    parser.add_argument(
+        "--samples",
+        type=int,
+        default=50,
+        help="Number of samples per domain (default: 50).",
+    )
+    parser.add_argument(
+        "--seed", type=int, default=None, help="Random seed for reproducibility."
+    )
     args = parser.parse_args()
 
     results = run_domain_selftest(n_samples=args.samples, seed=args.seed)
@@ -81,4 +87,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

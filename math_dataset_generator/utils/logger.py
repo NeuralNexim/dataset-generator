@@ -9,7 +9,6 @@ Usage inside any module:
 
 import logging
 
-
 _PACKAGE = "math_dataset_generator"
 _FORMAT = "%(asctime)s [%(levelname)s] %(name)s: %(message)s"
 _DATE_FORMAT = "%H:%M:%S"
