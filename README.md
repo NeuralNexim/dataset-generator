@@ -13,6 +13,11 @@ Enterprise-grade, modular math dataset generator for training and evaluating rea
   - Mixed-domain reasoning
 - Step-by-step reasoning traces
 - Unified invariant enforcement (non-negative answers, finite values, non-empty expressions)
+- Deterministic output via `--seed` flag
+- Unified exception hierarchy (`DomainError`, `TemplateError`, `ReasoningError`, `SampleValidationError`)
+- Fail-fast domain guards — errors surface at the generator level with clear domain context
+- Per-domain performance benchmarks (min/max/mean/p95 latency) in stress suite
+- Debug logging via `--debug` flag
 - Noise injection and difficulty scaling
 - Curriculum-ready structure
 - JSONL dataset output
@@ -28,19 +33,30 @@ pip install -e .[dev]
 ## Running Tests
 
 ```bash
-pytest
+.venv\Scripts\python.exe -m pytest tests/
 ```
 
 ## CLI Usage
 
 ```bash
-python -m math_dataset_generator.main --help
+python -m math_dataset_generator.generate --domain arithmetic --count 100
+python -m math_dataset_generator.generate --domain arithmetic --count 100 --seed 42
+python -m math_dataset_generator.generate --domain arithmetic --count 100 --debug
+python -m math_dataset_generator.generate --domain arithmetic --count 100 --output output/arithmetic.jsonl
 ```
 
-Example:
+## Domain Self-Test
 
 ```bash
-python -m math_dataset_generator.main --domain arithmetic --n 1000 --output output/arithmetic.jsonl
+python -m math_dataset_generator.selftest
+python -m math_dataset_generator.selftest --samples 200 --seed 42
+```
+
+## Stress Suite
+
+```bash
+python -m math_dataset_generator.stress --all --load light
+python -m math_dataset_generator.stress --perf --load medium
 ```
 
 ## Project Structure

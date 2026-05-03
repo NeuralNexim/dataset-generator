@@ -2,13 +2,13 @@
 
 ## 1. Production Hardening
 - [x] Unified invariants (no negative answers, valid expressions, valid units)
-- [ ] Deterministic mode (seed control)
-- [ ] Performance profiling + benchmarks
-- [ ] Fail‑fast guards in all domain generators
-- [ ] Unified error model (DomainError, TemplateError, ReasoningError)
-- [ ] Domain self‑test command (`python -m math_dataset_generator.selftest`)
-- [ ] Logging + debug mode
-- [ ] Hardening pass v2 (shared reasoning engine, shared expression builder, domain invariants)
+- [x] Deterministic mode (seed control)
+- [x] Performance profiling + benchmarks
+- [x] Fail‑fast guards in all domain generators
+- [x] Unified error model (DomainError, TemplateError, ReasoningError)
+- [x] Domain self‑test command (`python -m math_dataset_generator.selftest`)
+- [x] Logging + debug mode
+- [x] Hardening pass v2 (shared reasoning engine, shared expression builder, domain invariants)
 
 ---
 
